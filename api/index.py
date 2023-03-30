@@ -16,7 +16,7 @@ def act(act: str):
     json_url = os.path.join(SITE_ROOT, "../static", "prompts.json")
     data = json.load(open(json_url))
     for i in range(len(data)):
-        if data[i]["act"].lower() == act.lower():
+        if data[i]["act"].lower().replace(" ", "") == act.lower().replace(" ", ""):
             resp = data[i]["prompt"]
             ret = {"act": act.lower(), "prompt": resp}
             return ret
