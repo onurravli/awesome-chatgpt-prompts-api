@@ -12,6 +12,7 @@ def home():
 
 @app.route("/act/<string:act>")
 def act(act: str):
+    act = act.replace("%20", " ")
     SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
     json_url = os.path.join(SITE_ROOT, "../static", "prompts.json")
     data = json.load(open(json_url))
